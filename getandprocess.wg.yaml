@@ -1,0 +1,14 @@
+apiVersion: 1
+output: proecessapirestask
+tasks:
+  getapirestask:
+    run: getapires
+
+  proecessapirestask:
+    run: proecessapires
+    inputs:
+      headers:
+        previousres: "{$.Tasks.getapirestask.Output}"
+        Content-Type: application/json
+    requires:
+    - getapirestask
